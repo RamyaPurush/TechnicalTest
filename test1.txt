@@ -1,0 +1,54 @@
+class Animal {
+ void walk(){
+ System.out.println("I am walking");
+ }
+}
+class Bird extends Animal {
+ void fly() {
+ System.out.println("I am flying");
+ }
+}
+public class Solution {
+ public static void main(String[] args) {
+ Bird bird = new Bird();
+ bird.walk();
+ bird.fly();
+ bird.sing();
+ }
+}
+
+1. Can you implement the sing() method for the bird?
+
+[Ramya] : Cannot. The sing() method  is not defined in parent nor the child class.
+
+a. How did you unit test it?
+
+[Ramya] : If we run the above program we will receive a compilation error for cannot find symbol for sing() method.
+
+b. How did you optimize the code for maintainability?
+
+[Ramya] : Either remove the method or include the method in either the parent or the child class as below.
+
+class Animal {
+ void walk(){
+ System.out.println("I am walking");
+ }
+ 
+ void sing(){
+ System.out.println("I am singing");
+ }
+ 
+}
+class Bird extends Animal {
+ void fly() {
+ System.out.println("I am flying");
+ }
+}
+public class Solution {
+ public static void main(String[] args) {
+ Bird bird = new Bird();
+ bird.walk();
+ bird.fly();
+ bird.sing();
+ }
+}
