@@ -1,0 +1,229 @@
+4. Can you model a parrot? We are specifically interested in three parrots, one that
+lived in a house with dogs one in a house with cats, the other lived on a farm next to
+the rooster.
+
+B. Model fish as well as other swimming animals
+1. In addition to the birds, can you model a fish?
+a. Fishes don’t sing
+b. Fishes don’t walk
+c. Fishes can swim
+2. Can you specialize the fish as a Shark and as a Clownfish?
+a. Sharks are large and grey
+b. Clownfish are small and colourful (orange)
+c. Clownfish make jokes
+d. Sharks eat other fish
+3. Dolphins are not exactly fish, yet, they are good swimmers
+a. Can you model a dolphin that swims without inheriting from a fish class?
+b. How do you avoid duplicating code or introducing unneeded overhead?
+
+[Ramya] : 
+abstract class Animal {
+ abstract void sing();
+ void walk(){
+ System.out.println("I am walking");
+ }
+}
+
+class Dog extends Animal {
+ void sing(){
+ System.out.println("Woof woof");
+ }
+}
+
+class Cat extends Animal {
+ void sing(){
+ System.out.println("Meow meow");
+ }
+}
+
+class Bird extends Animal {
+ void label(){
+ System.out.println("Label:");
+ }
+ void sing(){
+ System.out.println("I am singing");
+ }  
+ void fly() {
+ System.out.println("I am flying");
+ }
+ 
+ void swim() {
+ System.out.println("I am swimming");
+ }
+}
+
+class Chicken extends Bird {
+ void label(){
+ System.out.println("Chicken : ");
+ }
+ void sing(){
+ System.out.println("cluck cluck");
+ }
+ void fly(){
+ System.out.println("I cannot fly");
+ }
+}
+
+class Duck extends Bird {
+ void label(){
+ System.out.println("Duck : ");
+ }
+ void sing(){
+ System.out.println("quack quack");
+ }
+ void swim(){
+ System.out.println("I can swim");
+ }
+}
+
+class Rooster{
+ private Chicken chick;
+ 
+ public Rooster(){
+  this.chick= new Chicken();
+ }
+ void label(){
+ System.out.println("Rooster : ");
+ }
+ void sing(){
+  System.out.println("Cock-a-doodle-doo");  
+ }
+}
+
+class Parrot extends Bird {
+ void sounds(Animal a){
+ a.sing();
+ }
+}
+
+class Fish extends Animal {
+ void label(){
+ System.out.println("Fish : ");
+ }
+ void sing(){
+ System.out.println("I cannot sing");
+ }  
+ void walk() {
+ System.out.println("I cannot walk");
+ }
+ void swim() {
+ System.out.println("I cant swim");
+ }
+ 
+}
+
+class Shark extends Fish {
+ void label(){
+ System.out.println("Shark : ");
+ }
+ void action(){
+ System.out.println("I eat other fishes");
+ }
+ void size(){
+ System.out.println("I am large");
+ }
+ void color(){
+ System.out.println("I am grey in color");   
+ }
+}
+
+class ClownFish extends Fish {
+ void label(){
+ System.out.println("ClownFish : ");
+ }
+ void action(){
+ System.out.println("I make jokes");
+ }
+ void size(){
+ System.out.println("I am small");
+ }
+ void color(){
+ System.out.println("I am orange in color");   
+ }
+}
+
+class Dolphin{
+ private Fish fish;
+ 
+ public Dolphin(){
+  this.fish= new Fish();
+ }
+ void label(){
+ System.out.println("Dolphin : ");
+ }
+ void swim(){
+  System.out.println("I can swim");  
+ }
+}
+
+public class Solution {
+ public static void main(String[] args) {
+  Chicken chick = new Chicken();
+  chick.label();
+  chick.sing();
+  chick.fly();
+  Duck duck = new Duck();
+  duck.label();
+  duck.sing();
+  duck.swim();
+  Rooster rooster = new Rooster();
+  rooster.label();
+  rooster.sing();
+  Dog d = new Dog();
+  Cat c = new Cat();
+  Parrot p = new Parrot();
+  p.sounds(d);
+  p.sounds(c);
+  //p.sounds(rooster);
+  p.sounds(duck);
+  p.sounds(chick);
+  Fish f = new Fish();
+  f.label();
+  f.sing();
+  f.walk();
+  f.swim();
+  Shark s = new Shark();
+  s.label();
+  s.size();
+  s.action();
+  s.color();
+  ClownFish cf = new ClownFish();
+  cf.label();
+  cf.size();
+  cf.action();
+  cf.color();
+  Dolphin dol = new Dolphin();
+  dol.label();
+  dol.swim();
+ 
+ }
+}
+
+Result : 
+
+Chicken : 
+cluck cluck
+I cannot fly
+Duck : 
+quack quack
+I can swim
+Rooster : 
+Cock-a-doodle-doo
+Woof woof
+Meow meow
+quack quack
+cluck cluck
+Fish : 
+I cannot sing
+I cannot walk
+I cant swim
+Shark : 
+I am large
+I eat other fishes
+I am grey in color
+ClownFish : 
+I am small
+I make jokes
+I am orange in color
+Dolphin : 
+I can swim
