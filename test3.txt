@@ -1,0 +1,93 @@
+3. Now how would you model a rooster?
+
+[Ramya] : Use composition instead of inheritance
+
+class Animal {
+ void walk(){
+ System.out.println("I am walking");
+ }
+}
+
+abstract class Bird extends Animal {
+ void label(){
+ System.out.println("Label:");
+ }
+ void fly() {
+ System.out.println("I am flying");
+ }
+ abstract void sing();
+ void swim() {
+ System.out.println("I am swimming");
+ }
+}
+
+class Chicken extends Bird {
+ void label(){
+ System.out.println("Chicken : ");
+ }
+ void sing(){
+ System.out.println("cluck cluck");
+ }
+ void fly(){
+ System.out.println("I cannot fly");
+ }
+}
+
+class Duck extends Bird {
+ void label(){
+ System.out.println("Duck : ");
+ }
+ void sing(){
+ System.out.println("quack quack");
+ }
+ void swim(){
+ System.out.println("I can swim");
+ }
+}
+
+class Rooster{
+ private Chicken chick;
+ 
+ public Rooster(){
+  this.chick= new Chicken();
+ }
+ void label(){
+ System.out.println("Rooster : ");
+ }
+ void sing(){
+  System.out.println("Cock-a-doodle-doo");  
+ }
+}
+
+public class Solution {
+ public static void main(String[] args) {
+  Chicken chick = new Chicken();
+  chick.label();
+  chick.sing();
+  chick.fly();
+  Duck duck = new Duck();
+  duck.label();
+  duck.sing();
+  duck.swim();
+  Rooster rooster = new Rooster();
+  rooster.label();
+  rooster.sing();
+ }
+}
+
+Result : 
+
+Chicken : 
+
+cluck cluck
+
+I cannot fly
+
+Duck : 
+
+quack quack
+
+I can swim
+
+Rooster :
+Cock-a-doodle-doo
