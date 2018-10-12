@@ -1,0 +1,59 @@
+2. Now, we have 2 special kinds of birds: the Duck and the Chicken... Can you
+implement them to make their own special sound?
+a. A duck says: “Quack, quack”
+b. A duck can swim
+c. A chicken says: “Cluck, cluck”
+d. A chicken cannot fly (assumption: its wings are clipped but ignore that)
+
+
+[Ramya] : 
+class Animal {
+ void walk(){
+ System.out.println("I am walking");
+ }
+}
+abstract class Bird extends Animal {
+ void fly() {
+ System.out.println("I am flying");
+ }
+ abstract void sing();
+ void swim() {
+ System.out.println("I am swimming");
+ }
+}
+class Chicken extends Bird {
+ void sing(){
+ System.out.println("cluck cluck");
+ }
+ void fly(){
+ System.out.println("I cannot fly");
+ }
+}
+class Duck extends Bird {
+ void sing(){
+ System.out.println("quack quack");
+ }
+ void swim(){
+ System.out.println("I can swim");
+ }
+}
+public class Solution {
+ public static void main(String[] args) {
+  Chicken chick = new Chicken();
+  chick.sing();
+  chick.fly();
+  Duck duck = new Duck();
+  duck.sing();
+  duck.swim();
+ }
+}
+
+Result :
+
+cluck cluck
+
+I cannot fly
+
+quack quack
+
+I can swim
